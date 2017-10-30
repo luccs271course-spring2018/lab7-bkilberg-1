@@ -63,35 +63,24 @@ public class LinkedStack<E> implements IStack<E> {
     return true;
   }
 
-/**
-  @Override
-  public List<E> asList() {
-    // DONE implement using an ArrayList preallocated with the right size
-    // DONE add any instance variable(s) required to support this
-    final ArrayList<E> list = new ArrayList<>(size);
-    Node<E> curr = top;
-    while (curr != null) {
-      list.add(curr.data);
-      curr = curr.next;
-    }
-    return list;
-  }
-  // return null;
-*/
-  
+  /**
+   * @Override public List<E> asList() { // DONE implement using an ArrayList preallocated with the
+   * right size // DONE add any instance variable(s) required to support this final ArrayList<E>
+   * list = new ArrayList<>(size); Node<E> curr = top; while (curr != null) { list.add(curr.data);
+   * curr = curr.next; } return list; } // return null;
+   */
   @Override
   public List<E> asList() {
     final ArrayList<E> result = new ArrayList<>(size);
     populateList(top, result); // DONE replace null with the right reference
     return result;
   }
-  
+
   private void populateList(final Node<E> curr, final List<E> result) {
-  // TODO recursively populate the list in the desired order
+    // DONE recursively populate the list in the desired order
     if (curr == null) {
       return;
-    }
-    else {
+    } else {
       result.add(curr.data);
       populateList(curr.next, result);
     }
@@ -105,7 +94,12 @@ public class LinkedStack<E> implements IStack<E> {
   }
 
   private void populateFifoList(final Node<E> curr, final List<E> result) {
-  // TODO recursively populate the list in the desired order
+    // DONE recursively populate the list in the desired order
+    if (curr == null) {
+      return;
+    } else {
+      result.add(0, curr.data);
+      populateFifoList(curr.next, result);
+    }
   }
-
 }
