@@ -22,9 +22,29 @@ public class ReverseLines {
     final Scanner input = new Scanner(System.in);
     printReverse(input);
   }
-
+  /**
+   * private static void printReverse(final Scanner input) { 
+   * // TODO recursively read and print
+   * successive input lines until EOF, then print them out in // reverse order 
+   * String str = input.nextLine(); 
+   * if (str == null || str.equals("")) { 
+   * return; } else {
+   * System.out.println(str); 
+   * printReverse(input); 
+   * System.out.println(str); } 
+   * }
+   */
+   
   private static void printReverse(final Scanner input) {
-    // TODO recursively read and print successive input lines until EOF, then print them out in
+    // DONE recursively read and print successive input lines until EOF, then print them out in
     // reverse order
+    if (input.hasNextLine()) {
+      final String str = input.nextLine();
+      System.out.println(str);
+      printReverse(input);
+      System.out.println(str);
+    } else {
+      return;
+    }
   }
 }
